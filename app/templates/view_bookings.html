@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Bookings</h1>
+    {% if bookings %}
+        <table>
+            <tr>
+                <th>Booking ID</th>
+                <th>Guest Name</th>
+                <th>Room Number</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.booking_id }}</td>
+                    <td>{{ booking.guest_name }}</td>
+                    <td>{{ booking.room_number }}</td>
+                    <td>{{ booking.check_in_date }}</td>
+                    <td>{{ booking.check_out_date }}</td>
+                    <td>{{ booking.total_amount }}</td>
+                    <td>{{ booking.booking_status }}</td>
+                    <td>
+                        {% if booking.booking_status == 'Confirmed' %}
+                            <form action="{{ url_for('main.cancel_booking', booking_id=booking.booking_id) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Cancel</button>
+                            </form>
+                        {% endif %}
+                        <a href="{{ url_for('main.view_payments', booking_id=booking.booking_id) }}" class="btn">View Payments</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No bookings found.</p>
+    {% endif %}
+{% endblock %}

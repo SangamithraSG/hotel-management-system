@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Guest List</h1>
+    {% if guests %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Created At</th>
+            </tr>
+            {% for guest in guests %}
+                <tr>
+                    <td>{{ guest.guest_id }}</td>
+                    <td>{{ guest.name }}</td>
+                    <td>{{ guest.email }}</td>
+                    <td>{{ guest.phone }}</td>
+                    <td>{{ guest.address }}</td>
+                    <td>{{ guest.created_at }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No guests found.</p>
+    {% endif %}
+{% endblock %}

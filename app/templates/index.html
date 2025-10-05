@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to Hotel Management System</h1>
+    <p>Manage guests, check room availability, make bookings, and track payments.</p>
+    <div class="button-group">
+        <a href="{{ url_for('main.add_guest') }}" class="btn">Add Guest</a>
+        <a href="{{ url_for('main.check_availability') }}" class="btn">Check Availability</a>
+        <a href="{{ url_for('main.view_bookings') }}" class="btn">View Bookings</a>
+    </div>
+{% endblock %}
+

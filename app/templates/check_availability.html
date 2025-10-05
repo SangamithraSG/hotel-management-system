@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Check Room Availability</h1>
+    <form method="POST">
+        <label for="check_in">Check-in Date:</label>
+        <input type="date" id="check_in" name="check_in" required>
+        <label for="check_out">Check-out Date:</label>
+        <input type="date" id="check_out" name="check_out" required>
+        <button type="submit" class="btn">Check</button>
+    </form>
+    
+    {% if rooms %}
+        <h2>Available Rooms</h2>
+        <table>
+            <tr>
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Price/Night</th>
+                <th>Action</th>
+            </tr>
+            {% for room in rooms %}
+                <tr>
+                    <td>{{ room.room_number }}</td>
+                    <td>{{ room.room_type }}</td>
+                    <td>{{ room.price_per_night }}</td>
+                    <td><a href="{{ url_for('main.book_room', room_id=room.room_id) }}" class="btn">Book Now</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

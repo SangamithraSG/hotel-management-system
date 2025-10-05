@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Payment History for Booking #{{ booking_id }}</h1>
+    {% if payments %}
+        <table>
+            <tr>
+                <th>Payment ID</th>
+                <th>Amount</th>
+                <th>Payment Method</th>
+                <th>Payment Date</th>
+                <th>Status</th>
+            </tr>
+            {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.payment_id }}</td>
+                    <td>{{ payment.amount }}</td>
+                    <td>{{ payment.payment_method }}</td>
+                    <td>{{ payment.payment_date }}</td>
+                    <td>{{ payment.payment_status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No payments found for this booking.</p>
+    {% endif %}
+    <a href="{{ url_for('main.view_bookings') }}" class="btn">Back to Bookings</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Book Room</h1>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address"></textarea>
+        <label for="check_in">Check-in Date:</label>
+        <input type="date" id="check_in" name="check_in" required>
+        <label for="check_out">Check-out Date:</label>
+        <input type="date" id="check_out" name="check_out" required>
+        <label for="amount">Payment Amount:</label>
+        <input type="number" id="amount" name="amount" step="0.01" required>
+        <label for="payment_method">Payment Method:</label>
+        <select id="payment_method" name="payment_method" required>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Cash">Cash</option>
+            <option value="Online">Online</option>
+        </select>
+        <button type="submit" class="btn">Book Room</button>
+    </form>
+{% endblock %}
